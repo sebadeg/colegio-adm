@@ -2756,3 +2756,351 @@ Processing by Admin::CuentasController#show as HTML
 Completed 200 OK in 3216ms (Views: 883.5ms | ActiveRecord: 2202.1ms)
 
 
+  [1m[35m (159.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7249240251793186290)[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (160.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/bin/rake:23
+Migrating to CreateGrados (20191117184014)
+  [1m[35m (157.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (167.0ms)[0m  [1m[35mCREATE TABLE "grados" ("id" bigserial primary key, "nombre" character varying, "proximo_grado_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191117184014_create_grados.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (156.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191117184014"]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (155.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+Migrating to CreateRubros (20191117184021)
+  [1m[35m (154.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (164.0ms)[0m  [1m[35mCREATE TABLE "rubros" ("id" bigserial primary key, "nombre" character varying, "descripcion" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191117184021_create_rubros.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (156.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191117184021"]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (158.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (155.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (154.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (158.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (158.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(7249240251793186290)[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (161.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/bin/rake:23
+Started GET "/" for ::1 at 2019-11-17 16:01:48 -0300
+  [1m[35m (161.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 19ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for ::1 at 2019-11-17 16:01:53 -0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/shared/_links.erb (1.0ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (104.0ms)
+Started GET "/admin/login" for ::1 at 2019-11-17 16:01:55 -0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/shared/_links.erb (1.0ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (74.0ms)
+Completed 500 Internal Server Error in 772ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (can't add a new key into hash during iteration):
+    10:     <%= stylesheet_link_tag style, options %>
+    11:   <% end %>
+    12:   <% ActiveAdmin.application.javascripts.each do |path| %>
+    13:     <%= javascript_include_tag path %>
+    14:   <% end %>
+    15: 
+    16:   <%= favicon_link_tag ActiveAdmin.application.favicon if ActiveAdmin.application.favicon %>
+  
+C:/Ruby/lib/ruby/2.4.0/set.rb:171:in `replace'
+C:/Ruby/lib/ruby/2.4.0/set.rb:171:in `replace'
+C:/Ruby/lib/ruby/2.4.0/set.rb:381:in `collect!'
+sprockets (3.7.2) lib/sprockets/loader.rb:85:in `asset_from_cache'
+sprockets (3.7.2) lib/sprockets/loader.rb:57:in `block in load'
+sprockets (3.7.2) lib/sprockets/loader.rb:311:in `block in fetch_asset_from_dependency_cache'
+sprockets (3.7.2) lib/sprockets/loader.rb:307:in `each'
+sprockets (3.7.2) lib/sprockets/loader.rb:307:in `each_with_index'
+sprockets (3.7.2) lib/sprockets/loader.rb:307:in `fetch_asset_from_dependency_cache'
+sprockets (3.7.2) lib/sprockets/loader.rb:44:in `load'
+sprockets (3.7.2) lib/sprockets/cached_environment.rb:20:in `block in initialize'
+sprockets (3.7.2) lib/sprockets/cached_environment.rb:47:in `load'
+sprockets (3.7.2) lib/sprockets/base.rb:66:in `find_asset'
+sprockets (3.7.2) lib/sprockets/base.rb:92:in `[]'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:355:in `find_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:336:in `digest_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:325:in `asset_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:102:in `block in resolve_asset_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:242:in `block in resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `each'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `detect'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:101:in `resolve_asset_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:79:in `compute_asset_path'
+actionview (5.2.0) lib/action_view/helpers/asset_url_helper.rb:200:in `asset_path'
+actionview (5.2.0) lib/action_view/helpers/asset_url_helper.rb:318:in `javascript_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:144:in `block (2 levels) in javascript_include_tag'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:143:in `map'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:143:in `block in javascript_include_tag'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:140:in `map'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:140:in `javascript_include_tag'
+responsive_active_admin (0.0.5) app/views/layouts/active_admin_logged_out.html.erb:13:in `block in _____uby_lib_ruby_gems_______gems_responsive_active_admin_______app_views_layouts_active_admin_logged_out_html_erb__173958591_117388420'
+C:/Ruby/lib/ruby/2.4.0/set.rb:324:in `each_key'
+C:/Ruby/lib/ruby/2.4.0/set.rb:324:in `each'
+responsive_active_admin (0.0.5) app/views/layouts/active_admin_logged_out.html.erb:12:in `_____uby_lib_ruby_gems_______gems_responsive_active_admin_______app_views_layouts_active_admin_logged_out_html_erb__173958591_117388420'
+actionview (5.2.0) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.2.0) lib/active_support/notifications.rb:170:in `instrument'
+actionview (5.2.0) lib/action_view/template.rb:354:in `instrument_render_template'
+actionview (5.2.0) lib/action_view/template.rb:157:in `render'
+actionview (5.2.0) lib/action_view/renderer/template_renderer.rb:66:in `render_with_layout'
+actionview (5.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.2.0) lib/action_view/renderer/template_renderer.rb:16:in `render'
+actionview (5.2.0) lib/action_view/renderer/renderer.rb:44:in `render_template'
+actionview (5.2.0) lib/action_view/renderer/renderer.rb:25:in `render'
+actionview (5.2.0) lib/action_view/rendering.rb:103:in `_render_template'
+actionpack (5.2.0) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+actionview (5.2.0) lib/action_view/rendering.rb:84:in `render_to_body'
+actionpack (5.2.0) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.2.0) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+actionpack (5.2.0) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:46:in `block (2 levels) in render'
+activesupport (5.2.0) lib/active_support/core_ext/benchmark.rb:14:in `block in ms'
+C:/Ruby/lib/ruby/2.4.0/benchmark.rb:308:in `realtime'
+activesupport (5.2.0) lib/active_support/core_ext/benchmark.rb:14:in `ms'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:46:in `block in render'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.2.0) lib/active_record/railties/controller_runtime.rb:31:in `cleanup_view_runtime'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:45:in `render'
+responders (3.0.0) lib/action_controller/responder.rb:240:in `default_render'
+responders (3.0.0) lib/action_controller/responder.rb:172:in `to_html'
+responders (3.0.0) lib/action_controller/responder.rb:165:in `respond'
+responders (3.0.0) lib/action_controller/responder.rb:158:in `call'
+responders (3.0.0) lib/action_controller/respond_with.rb:213:in `respond_with'
+devise (4.4.3) app/controllers/devise/sessions_controller.rb:14:in `new'
+actionpack (5.2.0) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.0) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.0) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.0) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.0) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.0) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.0) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.0) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.0) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (5.2.0) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Completed 200 OK in 6091ms (Views: 5571.8ms | ActiveRecord: 487.0ms)
+
+
+Started GET "/admin/login" for ::1 at 2019-11-17 16:04:10 -0300
+  [1m[35m (158.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/shared/_links.erb (5.0ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (95.0ms)
+Completed 200 OK in 2764ms (Views: 2231.7ms | ActiveRecord: 495.0ms)
+
+
+Started POST "/admin/login" for ::1 at 2019-11-17 16:04:26 -0300
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GdEXz0pZ8l8WVVsi8cpRSaWaxkL40HczKTO5F4xFN6diH/2u6Trk/SsLmzL4Ov+9gSpyNV/6wUXDgYWIeQ6YZw==", "admin_usuario"=>{"email"=>"soporte@varela.edu.uy", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Iniciar Sesión"}
+  [1m[36mAdminUsuario Load (160.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."email" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["email", "soporte@varela.edu.uy"], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (157.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUsuario Update (159.0ms)[0m  [1m[33mUPDATE "admin_usuarios" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "admin_usuarios"."id" = $3[0m  [["remember_created_at", "2019-11-17 19:04:27.738633"], ["updated_at", "2019-11-17 19:04:27.901642"], ["id", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (156.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (159.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUsuario Update (174.0ms)[0m  [1m[33mUPDATE "admin_usuarios" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "admin_usuarios"."id" = $5[0m  [["sign_in_count", 3], ["current_sign_in_at", "2019-11-17 19:04:28.269663"], ["last_sign_in_at", "2019-11-17 11:57:25.030121"], ["updated_at", "2019-11-17 19:04:28.432672"], ["id", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (174.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 1787ms (ActiveRecord: 1139.1ms)
+
+
+Started GET "/" for ::1 at 2019-11-17 16:04:29 -0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUsuario Load (159.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb (668.0ms)
+Completed 200 OK in 917ms (Views: 725.9ms | ActiveRecord: 159.0ms)
+
+
+Started GET "/admin/grados" for ::1 at 2019-11-17 16:04:35 -0300
+Processing by Admin::GradosController#index as HTML
+  [1m[36mAdminUsuario Load (158.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (179.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (182.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "grados"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mGrado Load (177.0ms)[0m  [1m[34mSELECT  "grados".* FROM "grados" ORDER BY "grados"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1415.1ms)
+Completed 200 OK in 2045ms (Views: 993.0ms | ActiveRecord: 1034.1ms)
+
+
+Started GET "/admin/grados?order=id_asc" for ::1 at 2019-11-17 16:04:40 -0300
+Processing by Admin::GradosController#index as HTML
+  Parameters: {"order"=>"id_asc"}
+  [1m[36mAdminUsuario Load (158.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (158.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (157.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "grados"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mGrado Load (166.0ms)[0m  [1m[34mSELECT  "grados".* FROM "grados" ORDER BY "grados"."id" asc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1295.1ms)
+Completed 200 OK in 1583ms (Views: 935.1ms | ActiveRecord: 639.0ms)
+
+
+Started GET "/admin/rubros" for ::1 at 2019-11-17 16:04:55 -0300
+Processing by Admin::RubrosController#index as HTML
+  [1m[36mAdminUsuario Load (160.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (161.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "rubros" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "rubros" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (158.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "rubros"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "rubros" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mRubro Load (162.0ms)[0m  [1m[34mSELECT  "rubros".* FROM "rubros" ORDER BY "rubros"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1288.1ms)
+Completed 200 OK in 1948ms (Views: 952.7ms | ActiveRecord: 978.1ms)
+
+
+Started GET "/admin/rubros/510201012" for ::1 at 2019-11-17 16:05:00 -0300
+Processing by Admin::RubrosController#show as HTML
+  Parameters: {"id"=>"510201012"}
+  [1m[36mAdminUsuario Load (163.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mRubro Load (157.0ms)[0m  [1m[34mSELECT  "rubros".* FROM "rubros" WHERE "rubros"."id" = $1 LIMIT $2[0m  [["id", 510201012], ["LIMIT", 1]]
+  ↳ app/admin/02_cuenta_corriente/rubros.rb:38
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/show.html.arb
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/show.html.arb (668.0ms)
+Completed 200 OK in 1582ms (Views: 803.7ms | ActiveRecord: 478.0ms)
+
+
+Started GET "/admin/grados" for ::1 at 2019-11-17 16:09:41 -0300
+Processing by Admin::GradosController#index as HTML
+  [1m[36mAdminUsuario Load (158.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (199.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (157.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "grados"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mGrado Load (165.0ms)[0m  [1m[34mSELECT  "grados".* FROM "grados" ORDER BY "grados"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1327.1ms)
+Completed 200 OK in 1603ms (Views: 916.7ms | ActiveRecord: 679.0ms)
+
+
+Started GET "/admin/grados?utf8=%E2%9C%93&q%5Bid_equals%5D=22&commit=Filtrar&order=id_desc" for ::1 at 2019-11-17 16:09:56 -0300
+Processing by Admin::GradosController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"id_equals"=>"22"}, "commit"=>"Filtrar", "order"=>"id_desc"}
+  [1m[36mAdminUsuario Load (158.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (158.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" WHERE "grados"."id" = 22 LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" WHERE "grados"."id" = 22 LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (156.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "grados" WHERE "grados"."id" = 22[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "grados" WHERE "grados"."id" = 22 LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mGrado Load (159.0ms)[0m  [1m[34mSELECT  "grados".* FROM "grados" WHERE "grados"."id" = 22 ORDER BY "grados"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1270.1ms)
+Completed 200 OK in 1567ms (Views: 924.1ms | ActiveRecord: 631.0ms)
+
+
