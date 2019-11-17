@@ -2,7 +2,8 @@ ActiveAdmin.register Alumno do
 
   menu priority: 101, label: "Alumnos", parent: "Administracion"
 
-  permit_params :cedula,
+  permit_params :id,
+    :cedula,
     :nombre,
     :apellido,
     :lugar_nacimiento,
@@ -12,7 +13,10 @@ ActiveAdmin.register Alumno do
     :mutualista,
     :emergencia,
     :procede,
-    :anio_ingreso
+    :anio_ingreso,
+    padre_alumno_attributes: [:id,:usuario_id,:alumno_id,:_destroy],
+    cuenta_alumno_attributes: [:id,:cuenta_id,:alumno_id,:_destroy]
+
 
   index do
     selectable_column
@@ -42,25 +46,43 @@ ActiveAdmin.register Alumno do
       row :emergencia
       row :procede
       row :anio_ingreso
+      row "Padres" do 
+        table_for PadreAlumno.where("alumno_id=#{r.id}") do |t|
+          t.column "Padre" do |c| c.usuario_tostr() end
+        end
+      end
+      row "Cuentas" do 
+        table_for CuentaAlumno.where("alumno_id=#{r.id}") do |t|
+          t.column "Cuenta" do |c| c.cuenta_tostr() end
+        end
+      end
+
     end
   end
 
-  form do |f|
-    f.inputs do
-      f.input :id
-      f.input :cedula
-      f.input :nombre
-      f.input :apellido
-      f.input :lugar_nacimiento
-      f.input :fecha_nacimiento
-      f.input :domicilio
-      f.input :celular
-      f.input :mutualista
-      f.input :emergencia
-      f.input :procede
-      f.input :anio_ingreso
+  form partial: 'form'
+
+  controller do
+
+    def show
+      @page_title = "#{resource.nombre_clase}: #{resource.tostr()}"
     end
-    f.actions
+
+    def edit
+      @page_title = "#{resource.nombre_clase}: #{resource.tostr()}"
+    end
+
+    def update
+      update! do |format|
+        format.html { redirect_to collection_path } if resource.valid?
+      end
+    end
+
+    def create
+      create! do |format|
+        format.html { redirect_to collection_path } if resource.valid?
+      end
+    end
   end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_134858) do
+ActiveRecord::Schema.define(version: 2019_11_17_142732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,12 +63,39 @@ ActiveRecord::Schema.define(version: 2019_11_17_134858) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cuenta_alumnos", force: :cascade do |t|
+    t.bigint "cuenta_id"
+    t.bigint "alumno_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_cuenta_alumnos_on_alumno_id"
+    t.index ["cuenta_id"], name: "index_cuenta_alumnos_on_cuenta_id"
+  end
+
   create_table "cuentas", force: :cascade do |t|
     t.string "nombre"
     t.text "comentario"
     t.text "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "padre_alumnos", force: :cascade do |t|
+    t.bigint "usuario_id"
+    t.bigint "alumno_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_padre_alumnos_on_alumno_id"
+    t.index ["usuario_id"], name: "index_padre_alumnos_on_usuario_id"
+  end
+
+  create_table "titular_cuentas", force: :cascade do |t|
+    t.bigint "cuenta_id"
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cuenta_id"], name: "index_titular_cuentas_on_cuenta_id"
+    t.index ["usuario_id"], name: "index_titular_cuentas_on_usuario_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -99,4 +126,10 @@ ActiveRecord::Schema.define(version: 2019_11_17_134858) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cuenta_alumnos", "alumnos"
+  add_foreign_key "cuenta_alumnos", "cuentas"
+  add_foreign_key "padre_alumnos", "alumnos"
+  add_foreign_key "padre_alumnos", "usuarios"
+  add_foreign_key "titular_cuentas", "cuentas"
+  add_foreign_key "titular_cuentas", "usuarios"
 end

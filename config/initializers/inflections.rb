@@ -14,4 +14,5 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
   inflect.irregular 'cuenta', 'cuentas'
+  inflect.irregular 'titular_cuenta', 'titular_cuentas'
 end
