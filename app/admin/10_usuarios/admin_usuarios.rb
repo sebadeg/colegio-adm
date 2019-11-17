@@ -2,8 +2,7 @@ ActiveAdmin.register AdminUsuario do
 
   menu priority: 1001, label: "Usuarios", parent: "Usuarios"
 
-  permit_params 
-    :email,
+  permit_params :email,
     :acceso,
     :password,
     :password_confirmation

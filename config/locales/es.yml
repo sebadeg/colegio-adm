@@ -25,7 +25,12 @@ es:
     attributes:
       alumno:
         cedula: "Cédula"
-        direccion: "Dirección"
         lugar_nacimiento: "Lugar de nacimiento"
         fecha_nacimiento: "Fecha de nacimiento"
         anio_ingreso: "Año de ingreso"
+      usuario:
+        cedula: "Cédula"
+        lugar_nacimiento: "Lugar de nacimiento"
+        fecha_nacimiento: "Fecha de nacimiento"
+        profesion: "Profesión"
+        telefono_trabajo: "Teléfono de trabajo"

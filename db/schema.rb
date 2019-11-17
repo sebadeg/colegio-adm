@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_121009) do
+ActiveRecord::Schema.define(version: 2019_11_17_134858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,42 @@ ActiveRecord::Schema.define(version: 2019_11_17_121009) do
     t.integer "anio_ingreso"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cuentas", force: :cascade do |t|
+    t.string "nombre"
+    t.text "comentario"
+    t.text "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.integer "cedula"
+    t.string "nombre"
+    t.string "apellido"
+    t.string "lugar_nacimiento"
+    t.date "fecha_nacimiento"
+    t.string "domicilio"
+    t.string "celular"
+    t.string "profesion"
+    t.string "trabajo"
+    t.string "telefono_trabajo"
+    t.boolean "habilitado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_usuarios_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
 end

@@ -1,6 +1,6 @@
-ActiveAdmin.register Alumno do
+ActiveAdmin.register Usuario do
 
-  menu priority: 101, label: "Alumnos", parent: "Administracion"
+  menu priority: 102, label: "Padres", parent: "Administracion"
 
   permit_params :cedula,
     :nombre,
@@ -9,10 +9,9 @@ ActiveAdmin.register Alumno do
     :fecha_nacimiento,
     :domicilio,
     :celular,
-    :mutualista,
-    :emergencia,
-    :procede,
-    :anio_ingreso
+    :profesion,
+    :trabajo,
+    :telefono_trabajo
 
   index do
     selectable_column
@@ -23,7 +22,6 @@ ActiveAdmin.register Alumno do
     actions
   end
 
-  filter :id
   filter :cedula
   filter :nombre
   filter :apellido
@@ -38,10 +36,10 @@ ActiveAdmin.register Alumno do
       row :fecha_nacimiento
       row :domicilio
       row :celular
-      row :mutualista
-      row :emergencia
-      row :procede
-      row :anio_ingreso
+      row :profesion
+      row :trabajo
+      row :telefono_trabajo
+      row :habilitado
     end
   end
 
@@ -55,10 +53,10 @@ ActiveAdmin.register Alumno do
       f.input :fecha_nacimiento
       f.input :domicilio
       f.input :celular
-      f.input :mutualista
-      f.input :emergencia
-      f.input :procede
-      f.input :anio_ingreso
+      f.input :profesion
+      f.input :trabajo
+      f.input :telefono_trabajo
+      f.input :habilitado
     end
     f.actions
   end

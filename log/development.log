@@ -315,3 +315,147 @@ Processing by Admin::AdminUsuariosController#index as HTML
 Completed 200 OK in 1844ms (Views: 423.5ms | ActiveRecord: 1372.1ms)
 
 
+  [1m[35m (286.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7249240251793186290)[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (266.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/bin/rake:23
+Migrating to CreateUsuarios (20191117132409)
+  [1m[35m (233.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (252.0ms)[0m  [1m[35mCREATE TABLE "usuarios" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "cedula" integer, "nombre" character varying, "apellido" character varying, "lugar_nacimiento" character varying, "fecha_nacimiento" date, "domicilio" character varying, "celular" character varying, "profesion" character varying, "trabajo" character varying, "telefono_trabajo" character varying, "habilitado" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191117132409_create_usuarios.rb:3
+  [1m[35m (239.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_usuarios_on_email" ON "usuarios"  ("email")[0m
+  ↳ db/migrate/20191117132409_create_usuarios.rb:48
+  [1m[35m (253.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_usuarios_on_reset_password_token" ON "usuarios"  ("reset_password_token")[0m
+  ↳ db/migrate/20191117132409_create_usuarios.rb:49
+  [1m[36mActiveRecord::SchemaMigration Create (181.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191117132409"]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (245.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (248.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (259.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (276.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (205.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(7249240251793186290)[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (276.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/bin/rake:23
+Started GET "/" for ::1 at 2019-11-17 10:37:57 -0300
+  [1m[35m (211.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUsuario Load (245.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb (843.0ms)
+Completed 200 OK in 2002ms (Views: 868.3ms | ActiveRecord: 1080.1ms)
+
+
+Started GET "/admin/alumnos" for ::1 at 2019-11-17 10:38:09 -0300
+Processing by Admin::AlumnosController#index as HTML
+  [1m[36mAdminUsuario Load (253.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (199.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "alumnos" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (510.0ms)
+Completed 200 OK in 1293ms (Views: 389.6ms | ActiveRecord: 881.0ms)
+
+
+Started GET "/admin/usuarios" for ::1 at 2019-11-17 10:38:13 -0300
+Processing by Admin::UsuariosController#index as HTML
+  [1m[36mAdminUsuario Load (298.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (295.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "usuarios" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (602.0ms)
+Completed 200 OK in 1464ms (Views: 374.5ms | ActiveRecord: 1074.1ms)
+
+
+Started GET "/admin/admin_usuarios" for ::1 at 2019-11-17 10:38:20 -0300
+Processing by Admin::AdminUsuariosController#index as HTML
+  [1m[36mAdminUsuario Load (227.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (270.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_usuarios" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_usuarios" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (253.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "admin_usuarios"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_usuarios" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUsuario Load (226.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" ORDER BY "admin_usuarios"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1135.1ms)
+Completed 200 OK in 1446ms (Views: 461.1ms | ActiveRecord: 976.1ms)
+
+
+Started GET "/admin/dashboard" for ::1 at 2019-11-17 10:40:07 -0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUsuario Load (177.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb (274.0ms)
+Completed 200 OK in 497ms (Views: 310.2ms | ActiveRecord: 177.0ms)
+
+
+  [1m[35m (218.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7249240251793186290)[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (221.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/bin/rake:23
+Migrating to CreateCuentas (20191117134858)
+  [1m[35m (197.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (180.0ms)[0m  [1m[35mCREATE TABLE "cuentas" ("id" bigserial primary key, "nombre" character varying, "comentario" text, "info" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191117134858_create_cuentas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (194.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191117134858"]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (205.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (218.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (172.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (212.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (219.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(7249240251793186290)[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (219.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/bin/rake:23
+Started GET "/admin/dashboard" for ::1 at 2019-11-17 10:54:25 -0300
+  [1m[35m (163.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUsuario Load (237.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb (796.0ms)
+Completed 200 OK in 1739ms (Views: 820.5ms | ActiveRecord: 862.0ms)
+
+
+Started GET "/admin/alumnos" for ::1 at 2019-11-17 10:54:36 -0300
+Processing by Admin::AlumnosController#index as HTML
+  [1m[36mAdminUsuario Load (262.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (211.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "alumnos" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (522.0ms)
+Completed 200 OK in 1293ms (Views: 365.7ms | ActiveRecord: 913.1ms)
+
+
+Started GET "/admin/cuentas" for ::1 at 2019-11-17 10:54:39 -0300
+Processing by Admin::CuentasController#index as HTML
+  [1m[36mAdminUsuario Load (244.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (195.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "cuentas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (494.0ms)
+Completed 200 OK in 1202ms (Views: 380.5ms | ActiveRecord: 810.0ms)
+
+
