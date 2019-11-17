@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+  host: ec2-174-129-253-42.compute-1.amazonaws.com
+  username: pneyqgbsbloedd
+  password: 78f6f8a3f962ed3efb0a709c18fd958a1d839a822b9afa8fe7e61ec969184c93
+  database: d6ckgi1utrshqm
+  port: 5432
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
