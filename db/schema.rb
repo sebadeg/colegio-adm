@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_111056) do
+ActiveRecord::Schema.define(version: 2019_11_17_121009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,22 @@ ActiveRecord::Schema.define(version: 2019_11_17_111056) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_usuarios_on_reset_password_token", unique: true
+  end
+
+  create_table "alumnos", force: :cascade do |t|
+    t.integer "cedula"
+    t.string "nombre"
+    t.string "apellido"
+    t.string "lugar_nacimiento"
+    t.date "fecha_nacimiento"
+    t.string "domicilio"
+    t.string "celular"
+    t.string "mutualista"
+    t.string "emergencia"
+    t.string "procede"
+    t.integer "anio_ingreso"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
