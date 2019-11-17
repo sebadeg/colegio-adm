@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Varela Adm"
+  config.site_title = "Varela"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -119,7 +119,7 @@ ActiveAdmin.setup do |config|
   # This allows your users to comment on any resource registered with Active Admin.
   #
   # You can completely disable comments:
-  # config.comments = false
+  config.comments = false
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
@@ -138,7 +138,7 @@ ActiveAdmin.setup do |config|
   #
   # Enable and disable Batch Actions
   #
-  config.batch_actions = true
+  config.batch_actions = false
 
   # == Controller Filters
   #
@@ -230,6 +230,12 @@ ActiveAdmin.setup do |config|
   #     end
   #   end
 
+  config.namespace :admin do |admin|
+    admin.build_menu :default do |menu|
+      menu.add label: "Administracion", priority: 100
+      menu.add label: "Usuarios", priority: 1000
+    end
+  end
   # == Download Links
   #
   # You can disable download links on resource listing pages,
@@ -256,7 +262,7 @@ ActiveAdmin.setup do |config|
   # Pagination is enabled by default for all resources.
   # You can control the default per page count for all resources here.
   #
-  # config.default_per_page = 30
+  config.default_per_page = 100
   #
   # You can control the max per page count too.
   #
@@ -282,7 +288,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  # config.footer = 'my custom footer text'
+  config.footer = "Colegio Nacional Jose Pedro Varela"
 
   # == Sorting
   #

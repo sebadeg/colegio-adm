@@ -1,4 +1,26 @@
 es:
+  time:
+    formats:
+      long: "%B %d, %Y %H:%M"
+      short: "%H:%M"
+  date:
+    formats:
+      long: "%B %d, %Y %H:%M"
+      short: "%B %d, %Y"
+    month_names:
+    - ~
+    - Enero
+    - Febrero
+    - Marzo
+    - Abril
+    - Mayo
+    - Junio
+    - Julio
+    - Agosto
+    - Setiembre
+    - Octubre
+    - Noviembre
+    - Diciembre
   activerecord:
     attributes:
       alumno:

@@ -1,5 +1,19 @@
 ActiveAdmin.register Alumno do
-  permit_params :cedula, :nombre, :apellido, :lugar_nacimiento, :fecha_nacimiento, :domicilio, :celular, :mutualista, :emergencia, :procede, :anio_ingreso
+
+  menu priority: 101, label: "Alumnos", parent: "Administracion"
+
+  permit_params
+    :cedula,
+    :nombre,
+    :apellido,
+    :lugar_nacimiento,
+    :fecha_nacimiento,
+    :domicilio,
+    :celular,
+    :mutualista,
+    :emergencia,
+    :procede,
+    :anio_ingreso
 
   index do
     selectable_column
