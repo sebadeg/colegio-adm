@@ -3,11 +3,11 @@ class CuentaAlumno < ApplicationRecord
   belongs_to :alumno
 
   def cuenta_tostr
-  	return cuenta != nil ? "#{cuenta.id} - #{cuenta.nombre}" : ""
+  	return cuenta != nil ? cuenta.tostr() : ""
   end
 
   def alumno_tostr
-  	return alumno != nil ? "#{alumno.id} - #{alumno.nombre} #{alumno.apellido}" : ""
+  	return alumno != nil ? alumno.tostr() : ""
   end
 
 end

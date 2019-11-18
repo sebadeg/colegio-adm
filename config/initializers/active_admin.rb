@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Varela"
+  config.site_title = "Colegio"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -233,7 +233,8 @@ ActiveAdmin.setup do |config|
   config.namespace :admin do |admin|
     admin.build_menu :default do |menu|
       menu.add label: "Administracion", priority: 100
-      menu.add label: "Cuenta corriente", priority: 100
+      menu.add label: "Cuenta corriente", priority: 200
+      menu.add label: "Sociedad", priority: 800
       menu.add label: "Usuarios", priority: 1000
     end
   end
@@ -289,7 +290,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  config.footer = "Colegio Nacional Jose Pedro Varela"
+  config.footer = "Colegio"
 
   # == Sorting
   #

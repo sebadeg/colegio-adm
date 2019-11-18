@@ -3,10 +3,10 @@ class TitularCuenta < ApplicationRecord
   belongs_to :usuario
 
   def usuario_tostr
-  	return usuario != nil ? "#{usuario.nombre} #{usuario.apellido}" : ""
+  	return usuario != nil ? usuario.tostr() : ""
   end
 
   def cuenta_tostr
-  	return cuenta != nil ? "#{cuenta.id} - #{cuenta.nombre}" : ""
+  	return cuenta != nil ? cuenta.tostr() : ""
   end
 end

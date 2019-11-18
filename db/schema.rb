@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_184021) do
+ActiveRecord::Schema.define(version: 2019_11_17_201056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,16 @@ ActiveRecord::Schema.define(version: 2019_11_17_184021) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cuota_socios", force: :cascade do |t|
+    t.bigint "socio_id"
+    t.date "fecha"
+    t.string "concepto"
+    t.decimal "importe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["socio_id"], name: "index_cuota_socios_on_socio_id"
+  end
+
   create_table "grados", force: :cascade do |t|
     t.string "nombre"
     t.integer "proximo_grado_id"
@@ -99,6 +109,19 @@ ActiveRecord::Schema.define(version: 2019_11_17_184021) do
   create_table "rubros", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "socios", force: :cascade do |t|
+    t.integer "cedula"
+    t.string "nombre"
+    t.string "apellido"
+    t.string "email"
+    t.string "domicilio"
+    t.string "celular"
+    t.date "fecha_ingreso"
+    t.date "fecha_egreso"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -142,6 +165,7 @@ ActiveRecord::Schema.define(version: 2019_11_17_184021) do
 
   add_foreign_key "cuenta_alumnos", "alumnos"
   add_foreign_key "cuenta_alumnos", "cuentas"
+  add_foreign_key "cuota_socios", "socios"
   add_foreign_key "padre_alumnos", "alumnos"
   add_foreign_key "padre_alumnos", "usuarios"
   add_foreign_key "titular_cuentas", "cuentas"
