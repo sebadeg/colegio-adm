@@ -5,6 +5,9 @@ class Cuenta < ApplicationRecord
   has_many :cuenta_alumno, :dependent => :delete_all
   accepts_nested_attributes_for :cuenta_alumno, allow_destroy: true
 
+  has_many :factura, :dependent => :delete_all
+  accepts_nested_attributes_for :factura, allow_destroy: true
+
   def nombre_clase()
   	return "Cuenta"
   end

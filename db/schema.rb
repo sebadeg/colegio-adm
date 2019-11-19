@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_201056) do
+ActiveRecord::Schema.define(version: 2019_11_18_230614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,11 +90,37 @@ ActiveRecord::Schema.define(version: 2019_11_17_201056) do
     t.index ["socio_id"], name: "index_cuota_socios_on_socio_id"
   end
 
+  create_table "facturas", force: :cascade do |t|
+    t.bigint "cuenta_id"
+    t.date "fecha"
+    t.date "fecha_vencimiento"
+    t.date "fecha_pagos"
+    t.decimal "total"
+    t.decimal "dolar"
+    t.datetime "bajado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cuenta_id"], name: "index_facturas_on_cuenta_id"
+  end
+
   create_table "grados", force: :cascade do |t|
     t.string "nombre"
     t.integer "proximo_grado_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "linea_facturas", force: :cascade do |t|
+    t.bigint "factura_id"
+    t.bigint "alumno_id"
+    t.integer "indice"
+    t.string "descripcion"
+    t.decimal "importe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_linea_facturas_on_alumno_id"
+    t.index ["factura_id", "indice"], name: "index_linea_facturas_on_factura_id_and_indice", unique: true
+    t.index ["factura_id"], name: "index_linea_facturas_on_factura_id"
   end
 
   create_table "padre_alumnos", force: :cascade do |t|
@@ -166,6 +192,9 @@ ActiveRecord::Schema.define(version: 2019_11_17_201056) do
   add_foreign_key "cuenta_alumnos", "alumnos"
   add_foreign_key "cuenta_alumnos", "cuentas"
   add_foreign_key "cuota_socios", "socios"
+  add_foreign_key "facturas", "cuentas"
+  add_foreign_key "linea_facturas", "alumnos"
+  add_foreign_key "linea_facturas", "facturas"
   add_foreign_key "padre_alumnos", "alumnos"
   add_foreign_key "padre_alumnos", "usuarios"
   add_foreign_key "titular_cuentas", "cuentas"

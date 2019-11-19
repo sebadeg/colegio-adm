@@ -1,0 +1,1141 @@
+  [1m[35m (228.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7249240251793186290)[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (231.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/bin/rake:23
+Migrating to CreateFacturas (20191118230301)
+  [1m[35m (236.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (265.2ms)[0m  [1m[35mCREATE TABLE "facturas" ("id" bigserial primary key, "cuenta_id" bigint, "fecha" date, "fecha_vencimiento" date, "fecha_pagos" date, "total" decimal, "dolar" decimal, "bajado" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_971c0ddb2b"
+FOREIGN KEY ("cuenta_id")
+  REFERENCES "cuentas" ("id")
+)[0m
+  ↳ db/migrate/20191118230301_create_facturas.rb:3
+  [1m[35m (251.6ms)[0m  [1m[35mCREATE  INDEX  "index_facturas_on_cuenta_id" ON "facturas"  ("cuenta_id")[0m
+  ↳ db/migrate/20191118230301_create_facturas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (234.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191118230301"]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (220.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+Migrating to CreateLineaFacturas (20191118230614)
+  [1m[35m (234.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (173.6ms)[0m  [1m[35mCREATE TABLE "linea_facturas" ("id" bigserial primary key, "factura_id" bigint, "alumno_id" bigint, "indice" integer, "descripcion" character varying, "importe" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_eb1a46e94c"
+FOREIGN KEY ("factura_id")
+  REFERENCES "facturas" ("id")
+, CONSTRAINT "fk_rails_06a8dff634"
+FOREIGN KEY ("alumno_id")
+  REFERENCES "alumnos" ("id")
+)[0m
+  ↳ db/migrate/20191118230614_create_linea_facturas.rb:3
+  [1m[35m (240.0ms)[0m  [1m[35mCREATE  INDEX  "index_linea_facturas_on_factura_id" ON "linea_facturas"  ("factura_id")[0m
+  ↳ db/migrate/20191118230614_create_linea_facturas.rb:3
+  [1m[35m (228.2ms)[0m  [1m[35mCREATE  INDEX  "index_linea_facturas_on_alumno_id" ON "linea_facturas"  ("alumno_id")[0m
+  ↳ db/migrate/20191118230614_create_linea_facturas.rb:3
+  [1m[35m (237.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_linea_facturas_on_factura_id_and_indice" ON "linea_facturas"  ("factura_id", "indice")[0m
+  ↳ db/migrate/20191118230614_create_linea_facturas.rb:13
+  [1m[36mActiveRecord::SchemaMigration Create (249.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191118230614"]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (236.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (241.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (236.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (225.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (227.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(7249240251793186290)[0m
+  ↳ C:/Ruby/bin/rake:23
+  [1m[35m (234.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/bin/rake:23
+Started GET "/" for ::1 at 2019-11-18 20:31:24 -0300
+Started GET "/" for ::1 at 2019-11-18 20:31:28 -0300
+  [1m[35m (487.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+
+
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for ::1 at 2019-11-18 20:31:35 -0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/shared/_links.erb (1.0ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (271.0ms)
+Started GET "/" for ::1 at 2019-11-18 20:31:51 -0300
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for ::1 at 2019-11-18 20:31:51 -0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/shared/_links.erb (1.0ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (123.0ms)
+Completed 200 OK in 40827ms (Views: 38860.8ms | ActiveRecord: 1912.1ms)
+
+
+Completed 200 OK in 24584ms (Views: 24581.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for ::1 at 2019-11-18 20:32:28 -0300
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hvc2Nhs4hanu87jMmOScA3D2cDs+qysV7h+Zpp0C2CkbB+TekgPwISSMJS5rVmqBJCB0TGEOjMmhre6iFUmVRA==", "admin_usuario"=>{"email"=>"soporte@varela.edu.uy", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Iniciar Sesión"}
+  [1m[36mAdminUsuario Load (231.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."email" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["email", "soporte@varela.edu.uy"], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (228.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUsuario Update (244.0ms)[0m  [1m[33mUPDATE "admin_usuarios" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "admin_usuarios"."id" = $7[0m  [["current_sign_in_at", "2019-11-18 23:32:29.617629"], ["last_sign_in_at", "2019-11-18 22:51:49.486516"], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "167.56.17.140/32"], ["sign_in_count", 5], ["updated_at", "2019-11-18 23:32:29.850642"], ["id", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (233.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 1617ms (ActiveRecord: 936.1ms)
+
+
+Started GET "/" for ::1 at 2019-11-18 20:32:30 -0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUsuario Load (236.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb (649.0ms)
+Completed 200 OK in 1120ms (Views: 837.9ms | ActiveRecord: 236.0ms)
+
+
+Started GET "/admin/facturas" for ::1 at 2019-11-18 20:33:06 -0300
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (239.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (238.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1004.1ms)
+Completed 200 OK in 2166ms (Views: 913.9ms | ActiveRecord: 1206.1ms)
+
+
+Started GET "/admin/facturas/new" for ::1 at 2019-11-18 20:33:13 -0300
+Processing by Admin::FacturasController#new as HTML
+  [1m[36mAdminUsuario Load (234.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/new.html.arb
+  [1m[36mCuenta Load (251.0ms)[0m  [1m[34mSELECT "cuentas".* FROM "cuentas" ORDER BY "cuentas"."id" ASC[0m
+  ↳ app/models/cuenta.rb:20
+  Rendered admin/facturas/_form.html.erb (1713.1ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/new.html.arb (2399.1ms)
+Completed 500 Internal Server Error in 2784ms (ActiveRecord: 1452.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `indice' for #<PadreAlumno:0x000000000d532688>):
+    35: 
+    36:       <% js = a.semantic_fields_for :linea_factura, PadreAlumno.new do |b| %>
+    37:         <tr>
+    38:           <td><%= b.input :indice, label: false %></td>
+    39:           <td><%= b.input :alumno_id, label: false , as: :select, collection: Alumno.coleccion() %></td>
+    40:           <td><%= b.input :descripcion, label: false %></td>
+    41:           <td><%= b.input :importe, label: false %></td>
+  
+app/views/admin/facturas/_form.html.erb:38:in `block (3 levels) in _app_views_admin_facturas__form_html_erb__800167372_117931840'
+app/views/admin/facturas/_form.html.erb:36:in `block (2 levels) in _app_views_admin_facturas__form_html_erb__800167372_117931840'
+app/views/admin/facturas/_form.html.erb:14:in `block in _app_views_admin_facturas__form_html_erb__800167372_117931840'
+app/views/admin/facturas/_form.html.erb:1:in `_app_views_admin_facturas__form_html_erb__800167372_117931840'
+Started GET "/admin/facturas/new" for ::1 at 2019-11-18 20:33:57 -0300
+Processing by Admin::FacturasController#new as HTML
+  [1m[36mAdminUsuario Load (542.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/new.html.arb
+  [1m[36mCuenta Load (490.0ms)[0m  [1m[34mSELECT "cuentas".* FROM "cuentas" ORDER BY "cuentas"."id" ASC[0m
+  ↳ app/models/cuenta.rb:20
+  [1m[36mAlumno Load (210.0ms)[0m  [1m[34mSELECT "alumnos".* FROM "alumnos" ORDER BY "alumnos"."nombre" ASC, "alumnos"."apellido" ASC[0m
+  ↳ app/models/alumno.rb:20
+  Rendered admin/facturas/_form.html.erb (1840.1ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/new.html.arb (2579.1ms)
+Completed 200 OK in 3264ms (Views: 1034.8ms | ActiveRecord: 2219.1ms)
+
+
+Started POST "/admin/facturas" for ::1 at 2019-11-18 20:35:07 -0300
+Processing by Admin::FacturasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lnHwNK2qZSUvu9m2w8BK6TOLC3i0wg5nRPo1J1/hr8GDhpkhSfpCrWFewbMlayLDs4u50UxwndSEIYSAllt+Jw==", "factura"=>{"id"=>"1", "cuenta_id"=>"12121", "fecha"=>"2019-11-01", "fecha_vencimiento"=>"2019-11-10", "fecha_pagos"=>"2019-10-31", "total"=>"1000", "dolar"=>"", "bajado(1i)"=>"", "bajado(2i)"=>"", "bajado(3i)"=>"", "bajado(4i)"=>"", "bajado(5i)"=>"", "linea_factura_attributes"=>{"1574120096111"=>{"indice"=>"1", "alumno_id"=>"121211", "descripcion"=>"C", "importe"=>"1000", "_destroy"=>"0"}}}, "commit"=>"Guardar Factura"}
+  [1m[36mAdminUsuario Load (242.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (227.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (234.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Create (215.0ms)[0m  [1m[32mINSERT INTO "facturas" ("id", "cuenta_id", "fecha", "fecha_vencimiento", "fecha_pagos", "total", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["id", 1], ["cuenta_id", 12121], ["fecha", "2019-11-01"], ["fecha_vencimiento", "2019-11-10"], ["fecha_pagos", "2019-10-31"], ["total", "1000.0"], ["created_at", "2019-11-18 23:35:09.147309"], ["updated_at", "2019-11-18 23:35:09.147309"]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mLineaFactura Create (221.0ms)[0m  [1m[32mINSERT INTO "linea_facturas" ("factura_id", "alumno_id", "indice", "descripcion", "importe", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["factura_id", 1], ["alumno_id", 121211], ["indice", 1], ["descripcion", "C"], ["importe", "1000.0"], ["created_at", "2019-11-18 23:35:09.375322"], ["updated_at", "2019-11-18 23:35:09.375322"]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (236.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/facturas/1
+Completed 302 Found in 2344ms (ActiveRecord: 1603.1ms)
+
+
+Started GET "/admin/facturas/1" for ::1 at 2019-11-18 20:35:10 -0300
+Processing by Admin::FacturasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUsuario Load (247.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (234.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/show.html.arb
+  [1m[36mCuenta Load (238.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  [1m[36mLineaFactura Load (231.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE (factura_id=1) ORDER BY "linea_facturas"."indice" ASC[0m
+  ↳ app/admin/03_facturacion/facturas.rb:43
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/show.html.arb (1200.1ms)
+Completed 500 Internal Server Error in 2068ms (ActiveRecord: 950.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `alumno_tostr' for #<LineaFactura:0x000000000dfb0cb8>
+Did you mean?  alumno_id):
+    1: insert_tag renderer_for(:show)
+  
+app/admin/03_facturacion/facturas.rb:45:in `block (6 levels) in <top (required)>'
+app/admin/03_facturacion/facturas.rb:45:in `block (5 levels) in <top (required)>'
+app/admin/03_facturacion/facturas.rb:43:in `block (4 levels) in <top (required)>'
+app/admin/03_facturacion/facturas.rb:42:in `block (3 levels) in <top (required)>'
+app/admin/03_facturacion/facturas.rb:32:in `block (2 levels) in <top (required)>'
+Started POST "/admin/facturas" for ::1 at 2019-11-18 20:36:32 -0300
+Processing by Admin::FacturasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lnHwNK2qZSUvu9m2w8BK6TOLC3i0wg5nRPo1J1/hr8GDhpkhSfpCrWFewbMlayLDs4u50UxwndSEIYSAllt+Jw==", "factura"=>{"id"=>"1", "cuenta_id"=>"12121", "fecha"=>"2019-11-01", "fecha_vencimiento"=>"2019-11-10", "fecha_pagos"=>"2019-10-31", "total"=>"1000", "dolar"=>"", "bajado(1i)"=>"", "bajado(2i)"=>"", "bajado(3i)"=>"", "bajado(4i)"=>"", "bajado(5i)"=>"", "linea_factura_attributes"=>{"1574120184694"=>{"indice"=>"1", "alumno_id"=>"121211", "descripcion"=>"A", "importe"=>"1000", "_destroy"=>"0"}}}, "commit"=>"Guardar Factura"}
+  [1m[36mAdminUsuario Load (303.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (390.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (387.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAlumno Load (409.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121211], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Create (297.0ms)[0m  [1m[32mINSERT INTO "facturas" ("id", "cuenta_id", "fecha", "fecha_vencimiento", "fecha_pagos", "total", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["id", 1], ["cuenta_id", 12121], ["fecha", "2019-11-01"], ["fecha_vencimiento", "2019-11-10"], ["fecha_pagos", "2019-10-31"], ["total", "1000.0"], ["created_at", "2019-11-18 23:36:40.563866"], ["updated_at", "2019-11-18 23:36:40.563866"]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (243.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 6564ms (ActiveRecord: 5501.3ms)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "facturas_pkey"
+DETAIL:  Key (id)=(1) already exists.
+: INSERT INTO "facturas" ("id", "cuenta_id", "fecha", "fecha_vencimiento", "fecha_pagos", "total", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"):
+  
+activerecord (5.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:603:in `async_exec'
+activerecord (5.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:603:in `block (2 levels) in exec_no_cache'
+activesupport (5.2.0) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (5.2.0) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (5.2.0) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (5.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:602:in `block in exec_no_cache'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract_adapter.rb:579:in `block (2 levels) in log'
+C:/Ruby/lib/ruby/2.4.0/monitor.rb:214:in `mon_synchronize'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract_adapter.rb:578:in `block in log'
+activesupport (5.2.0) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract_adapter.rb:569:in `log'
+activerecord (5.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:601:in `exec_no_cache'
+activerecord (5.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:590:in `execute_and_clear'
+activerecord (5.2.0) lib/active_record/connection_adapters/postgresql/database_statements.rb:81:in `exec_query'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract/database_statements.rb:117:in `exec_insert'
+activerecord (5.2.0) lib/active_record/connection_adapters/postgresql/database_statements.rb:115:in `exec_insert'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract/database_statements.rb:149:in `insert'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract/query_cache.rb:21:in `insert'
+activerecord (5.2.0) lib/active_record/persistence.rb:187:in `_insert_record'
+activerecord (5.2.0) lib/active_record/persistence.rb:733:in `_create_record'
+activerecord (5.2.0) lib/active_record/counter_cache.rb:180:in `_create_record'
+activerecord (5.2.0) lib/active_record/locking/optimistic.rb:70:in `_create_record'
+activerecord (5.2.0) lib/active_record/attribute_methods/dirty.rb:137:in `_create_record'
+activerecord (5.2.0) lib/active_record/callbacks.rb:342:in `block in _create_record'
+activesupport (5.2.0) lib/active_support/callbacks.rb:132:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/callbacks.rb:816:in `_run_create_callbacks'
+activerecord (5.2.0) lib/active_record/callbacks.rb:342:in `_create_record'
+activerecord (5.2.0) lib/active_record/timestamp.rb:95:in `_create_record'
+activerecord (5.2.0) lib/active_record/persistence.rb:704:in `create_or_update'
+activerecord (5.2.0) lib/active_record/callbacks.rb:338:in `block in create_or_update'
+activesupport (5.2.0) lib/active_support/callbacks.rb:132:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/callbacks.rb:816:in `_run_save_callbacks'
+activerecord (5.2.0) lib/active_record/callbacks.rb:338:in `create_or_update'
+activerecord (5.2.0) lib/active_record/persistence.rb:275:in `save'
+activerecord (5.2.0) lib/active_record/validations.rb:46:in `save'
+activerecord (5.2.0) lib/active_record/transactions.rb:310:in `block (2 levels) in save'
+activerecord (5.2.0) lib/active_record/transactions.rb:386:in `block in with_transaction_returning_status'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract/database_statements.rb:254:in `block in transaction'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract/transaction.rb:230:in `block in within_new_transaction'
+C:/Ruby/lib/ruby/2.4.0/monitor.rb:214:in `mon_synchronize'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract/transaction.rb:227:in `within_new_transaction'
+activerecord (5.2.0) lib/active_record/connection_adapters/abstract/database_statements.rb:254:in `transaction'
+activerecord (5.2.0) lib/active_record/transactions.rb:212:in `transaction'
+activerecord (5.2.0) lib/active_record/transactions.rb:383:in `with_transaction_returning_status'
+activerecord (5.2.0) lib/active_record/transactions.rb:310:in `block in save'
+activerecord (5.2.0) lib/active_record/transactions.rb:325:in `rollback_active_record_state!'
+activerecord (5.2.0) lib/active_record/transactions.rb:309:in `save'
+activerecord (5.2.0) lib/active_record/suppressor.rb:44:in `save'
+activeadmin (1.3.0) lib/active_admin/resource_controller/data_access.rb:155:in `block in save_resource'
+activesupport (5.2.0) lib/active_support/core_ext/object/try.rb:19:in `public_send'
+activesupport (5.2.0) lib/active_support/core_ext/object/try.rb:19:in `try!'
+activesupport (5.2.0) lib/active_support/core_ext/object/try.rb:8:in `try'
+activeadmin (1.3.0) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.3.0) lib/active_admin/resource_controller/data_access.rb:154:in `save_resource'
+activeadmin (1.3.0) lib/active_admin/resource_controller/data_access.rb:144:in `block in create_resource'
+activesupport (5.2.0) lib/active_support/core_ext/object/try.rb:19:in `public_send'
+activesupport (5.2.0) lib/active_support/core_ext/object/try.rb:19:in `try!'
+activesupport (5.2.0) lib/active_support/core_ext/object/try.rb:8:in `try'
+activeadmin (1.3.0) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.3.0) lib/active_admin/resource_controller/data_access.rb:143:in `create_resource'
+inherited_resources (1.8.0) lib/inherited_resources/actions.rb:33:in `create'
+actionpack (5.2.0) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.0) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.0) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.0) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.0) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.0) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.0) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.0) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.0) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/admin/facturas" for ::1 at 2019-11-18 20:37:06 -0300
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (382.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (392.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (384.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "facturas"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (402.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" ORDER BY "facturas"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (392.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (2436.1ms)
+Completed 200 OK in 2955ms (Views: 987.8ms | ActiveRecord: 1952.1ms)
+
+
+Started GET "/admin/facturas/1/edit" for ::1 at 2019-11-18 20:37:12 -0300
+Processing by Admin::FacturasController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUsuario Load (247.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (234.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/edit.html.arb
+  [1m[36mCACHE Factura Load (0.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (409.0ms)[0m  [1m[34mSELECT "cuentas".* FROM "cuentas" ORDER BY "cuentas"."id" ASC[0m
+  ↳ app/models/cuenta.rb:20
+  [1m[36mLineaFactura Load (415.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE "linea_facturas"."factura_id" = $1[0m  [["factura_id", 1]]
+  ↳ app/views/admin/facturas/_form.html.erb:23
+  [1m[36mAlumno Load (180.0ms)[0m  [1m[34mSELECT "alumnos".* FROM "alumnos" ORDER BY "alumnos"."nombre" ASC, "alumnos"."apellido" ASC[0m
+  ↳ app/models/alumno.rb:20
+  [1m[36mCACHE Alumno Load (1.0ms)[0m  [1m[34mSELECT "alumnos".* FROM "alumnos" ORDER BY "alumnos"."nombre" ASC, "alumnos"."apellido" ASC[0m
+  ↳ app/models/alumno.rb:20
+  Rendered admin/facturas/_form.html.erb (1675.1ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/edit.html.arb (2362.1ms)
+Completed 200 OK in 3239ms (Views: 1498.8ms | ActiveRecord: 1486.1ms)
+
+
+Started PATCH "/admin/facturas/1" for ::1 at 2019-11-18 20:37:32 -0300
+Processing by Admin::FacturasController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PApeskkHjXhQ+N74uP3pARJahmLtuGDarkOSy5EWhjEp/TenrVeq8B4dxv1eVoErklo0yxUK82lumCNsWKxX1w==", "factura"=>{"id"=>"1", "cuenta_id"=>"12121", "fecha"=>"2019-11-01", "fecha_vencimiento"=>"2019-11-10", "fecha_pagos"=>"2019-10-31", "total"=>"1000.0", "dolar"=>"", "bajado(1i)"=>"", "bajado(2i)"=>"", "bajado(3i)"=>"", "bajado(4i)"=>"", "bajado(5i)"=>"", "linea_factura_attributes"=>{"0"=>{"indice"=>"1", "alumno_id"=>"121211", "descripcion"=>"C", "importe"=>"500", "_destroy"=>"0", "id"=>"1"}, "1574120241549"=>{"indice"=>"2", "alumno_id"=>"121212", "descripcion"=>"D", "importe"=>"500", "_destroy"=>"0"}}}, "commit"=>"Guardar Factura", "id"=>"1"}
+  [1m[36mAdminUsuario Load (437.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (457.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mLineaFactura Load (471.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE "linea_facturas"."factura_id" = $1 AND "linea_facturas"."id" = $2[0m  [["factura_id", 1], ["id", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (471.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (461.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAlumno Load (460.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121211], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAlumno Load (471.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121212], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mLineaFactura Update (448.0ms)[0m  [1m[33mUPDATE "linea_facturas" SET "importe" = $1, "updated_at" = $2 WHERE "linea_facturas"."id" = $3[0m  [["importe", "500.0"], ["updated_at", "2019-11-18 23:37:36.250623"], ["id", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mLineaFactura Create (480.0ms)[0m  [1m[32mINSERT INTO "linea_facturas" ("factura_id", "alumno_id", "indice", "descripcion", "importe", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["factura_id", 1], ["alumno_id", 121212], ["indice", 2], ["descripcion", "D"], ["importe", "500.0"], ["created_at", "2019-11-18 23:37:36.703649"], ["updated_at", "2019-11-18 23:37:36.703649"]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (481.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/facturas/1
+Completed 302 Found in 5010ms (ActiveRecord: 4637.3ms)
+
+
+Started GET "/admin/facturas/1" for ::1 at 2019-11-18 20:37:37 -0300
+Processing by Admin::FacturasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUsuario Load (471.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (487.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/show.html.arb
+  [1m[36mCuenta Load (467.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  [1m[36mLineaFactura Load (281.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE (factura_id=1) ORDER BY "linea_facturas"."indice" ASC[0m
+  ↳ app/admin/03_facturacion/facturas.rb:43
+  [1m[36mAlumno Load (237.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121211], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:10
+  [1m[36mAlumno Load (234.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121212], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:10
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/show.html.arb (1989.1ms)
+Completed 200 OK in 3079ms (Views: 889.8ms | ActiveRecord: 2177.1ms)
+
+
+Started GET "/admin/facturas" for ::1 at 2019-11-18 20:39:34 -0300
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (414.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (408.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (243.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "facturas"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (168.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" ORDER BY "facturas"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (164.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1772.1ms)
+Completed 200 OK in 2322ms (Views: 912.6ms | ActiveRecord: 1397.1ms)
+
+
+Started GET "/admin/logout" for ::1 at 2019-11-18 20:39:46 -0300
+Processing by ActiveAdmin::Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ibd0cXsdJTFAQ+vVBE3/SHT0N2PAbGMjea+yU2BmtAicQB1kn00CuQ6m89Di5pdi9PSFyjje8JC5dAP0qdxl7g=="}
+  [1m[36mAdminUsuario Load (235.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (237.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUsuario Update (230.0ms)[0m  [1m[33mUPDATE "admin_usuarios" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "admin_usuarios"."id" = $3[0m  [["remember_created_at", nil], ["updated_at", "2019-11-18 23:39:47.435817"], ["id", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (225.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 971ms (ActiveRecord: 927.1ms)
+
+
+Started GET "/admin" for ::1 at 2019-11-18 20:39:47 -0300
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for ::1 at 2019-11-18 20:39:48 -0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/shared/_links.erb (1.0ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (70.0ms)
+Completed 200 OK in 826ms (Views: 823.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for ::1 at 2019-11-18 21:46:41 -0300
+  [1m[35m (238.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IDKBHgwslz1aSRj66g43rp7hSFhdkaTkmPm6x/5Qz4JmGFeuBeI6QYrTg3LQ8z0m/b05Qi/CoB4af0URdBQGsg==", "admin_usuario"=>{"email"=>"soporte@varela.edu.uy", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Iniciar Sesión"}
+  [1m[36mAdminUsuario Load (239.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."email" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["email", "soporte@varela.edu.uy"], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (229.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUsuario Update (241.0ms)[0m  [1m[33mUPDATE "admin_usuarios" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "last_sign_in_ip" = $3, "sign_in_count" = $4, "updated_at" = $5 WHERE "admin_usuarios"."id" = $6[0m  [["current_sign_in_at", "2019-11-19 00:46:47.556870"], ["last_sign_in_at", "2019-11-18 23:32:29.617629"], ["last_sign_in_ip", "::1/128"], ["sign_in_count", 6], ["updated_at", "2019-11-19 00:46:47.790884"], ["id", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (234.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 2147ms (ActiveRecord: 1641.1ms)
+
+
+Started GET "/admin" for ::1 at 2019-11-18 21:46:49 -0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUsuario Load (232.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/page/index.html.arb (2067.1ms)
+Completed 200 OK in 2376ms (Views: 2126.4ms | ActiveRecord: 232.0ms)
+
+
+Started GET "/admin/facturas" for ::1 at 2019-11-18 21:47:51 -0300
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (568.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (1529.1ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (539.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "facturas"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (689.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" ORDER BY "facturas"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Started GET "/admin/facturas" for ::1 at 2019-11-18 21:48:16 -0300
+  [1m[36mCuenta Load (458.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (22268.3ms)
+Completed 200 OK in 24003ms (Views: 17687.9ms | ActiveRecord: 6293.4ms)
+
+
+Started GET "/admin/facturas" for ::1 at 2019-11-18 21:48:20 -0300
+Processing by Admin::FacturasController#index as HTML
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (241.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUsuario Load (322.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (718.0ms)
+Completed 500 Internal Server Error in 1244ms (ActiveRecord: 322.0ms)
+
+
+  
+ActionView::Template::Error (can't add a new key into hash during iteration):
+    1: insert_tag renderer_for(:index)
+  
+C:/Ruby/lib/ruby/2.4.0/set.rb:171:in `replace'
+C:/Ruby/lib/ruby/2.4.0/set.rb:171:in `replace'
+C:/Ruby/lib/ruby/2.4.0/set.rb:381:in `collect!'
+sprockets (3.7.2) lib/sprockets/loader.rb:85:in `asset_from_cache'
+sprockets (3.7.2) lib/sprockets/loader.rb:57:in `block in load'
+sprockets (3.7.2) lib/sprockets/loader.rb:311:in `block in fetch_asset_from_dependency_cache'
+sprockets (3.7.2) lib/sprockets/loader.rb:307:in `each'
+sprockets (3.7.2) lib/sprockets/loader.rb:307:in `each_with_index'
+sprockets (3.7.2) lib/sprockets/loader.rb:307:in `fetch_asset_from_dependency_cache'
+sprockets (3.7.2) lib/sprockets/loader.rb:44:in `load'
+sprockets (3.7.2) lib/sprockets/cached_environment.rb:20:in `block in initialize'
+sprockets (3.7.2) lib/sprockets/cached_environment.rb:47:in `load'
+sprockets (3.7.2) lib/sprockets/base.rb:66:in `find_asset'
+sprockets (3.7.2) lib/sprockets/base.rb:92:in `[]'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:355:in `find_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:336:in `digest_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:325:in `asset_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:102:in `block in resolve_asset_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:242:in `block in resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `each'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `detect'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:241:in `resolve_asset'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:101:in `resolve_asset_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:79:in `compute_asset_path'
+actionview (5.2.0) lib/action_view/helpers/asset_url_helper.rb:200:in `asset_path'
+actionview (5.2.0) lib/action_view/helpers/asset_url_helper.rb:318:in `javascript_path'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:144:in `block (2 levels) in javascript_include_tag'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:143:in `map'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:143:in `block in javascript_include_tag'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:140:in `map'
+sprockets-rails (3.2.1) lib/sprockets/rails/helper.rb:140:in `javascript_include_tag'
+arbre (1.2.1) lib/arbre/element.rb:181:in `method_missing'
+activeadmin (1.3.0) lib/active_admin/views/pages/base.rb:37:in `block (2 levels) in build_active_admin_head'
+C:/Ruby/lib/ruby/2.4.0/set.rb:324:in `each_key'
+C:/Ruby/lib/ruby/2.4.0/set.rb:324:in `each'
+activeadmin (1.3.0) lib/active_admin/views/pages/base.rb:36:in `block in build_active_admin_head'
+arbre (1.2.1) lib/arbre/context.rb:92:in `with_current_arbre_element'
+arbre (1.2.1) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+activeadmin (1.3.0) lib/active_admin/views/pages/base.rb:26:in `build_active_admin_head'
+responsive_active_admin (0.0.5) lib/responsive_active_admin/active_admin/views/pages/base.rb:7:in `build_active_admin_head'
+activeadmin (1.3.0) lib/active_admin/views/pages/base.rb:9:in `build'
+activeadmin_addons (1.6.0) lib/activeadmin_addons/active_admin_config.rb:5:in `build'
+arbre (1.2.1) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+arbre (1.2.1) lib/arbre/context.rb:92:in `with_current_arbre_element'
+arbre (1.2.1) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+arbre (1.2.1) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+activeadmin (1.3.0) app/views/active_admin/resource/index.html.arb:2:in `block in _____uby_lib_ruby_gems_______gems_activeadmin_______app_views_active_admin_resource_index_html_arb__95870480_124983020'
+arbre (1.2.1) lib/arbre/context.rb:45:in `instance_eval'
+arbre (1.2.1) lib/arbre/context.rb:45:in `initialize'
+activeadmin (1.3.0) app/views/active_admin/resource/index.html.arb:1:in `new'
+activeadmin (1.3.0) app/views/active_admin/resource/index.html.arb:1:in `_____uby_lib_ruby_gems_______gems_activeadmin_______app_views_active_admin_resource_index_html_arb__95870480_124983020'
+actionview (5.2.0) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.2.0) lib/active_support/notifications.rb:170:in `instrument'
+actionview (5.2.0) lib/action_view/template.rb:354:in `instrument_render_template'
+actionview (5.2.0) lib/action_view/template.rb:157:in `render'
+actionview (5.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.2.0) lib/action_view/renderer/abstract_renderer.rb:44:in `block in instrument'
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.0) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in `instrument'
+actionview (5.2.0) lib/action_view/renderer/abstract_renderer.rb:43:in `instrument'
+actionview (5.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.2.0) lib/action_view/renderer/template_renderer.rb:16:in `render'
+actionview (5.2.0) lib/action_view/renderer/renderer.rb:44:in `render_template'
+actionview (5.2.0) lib/action_view/renderer/renderer.rb:25:in `render'
+actionview (5.2.0) lib/action_view/rendering.rb:103:in `_render_template'
+actionpack (5.2.0) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+actionview (5.2.0) lib/action_view/rendering.rb:84:in `render_to_body'
+actionpack (5.2.0) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.2.0) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+actionpack (5.2.0) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:46:in `block (2 levels) in render'
+activesupport (5.2.0) lib/active_support/core_ext/benchmark.rb:14:in `block in ms'
+C:/Ruby/lib/ruby/2.4.0/benchmark.rb:308:in `realtime'
+activesupport (5.2.0) lib/active_support/core_ext/benchmark.rb:14:in `ms'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:46:in `block in render'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.2.0) lib/active_record/railties/controller_runtime.rb:31:in `cleanup_view_runtime'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:45:in `render'
+responders (3.0.0) lib/action_controller/responder.rb:240:in `default_render'
+responders (3.0.0) lib/action_controller/responder.rb:172:in `to_html'
+responders (3.0.0) lib/responders/flash_responder.rb:109:in `to_html'
+responders (3.0.0) lib/action_controller/responder.rb:165:in `respond'
+responders (3.0.0) lib/action_controller/responder.rb:158:in `call'
+responders (3.0.0) lib/action_controller/respond_with.rb:213:in `respond_with'
+inherited_resources (1.8.0) lib/inherited_resources/actions.rb:7:in `index'
+activeadmin (1.3.0) lib/active_admin/resource_controller/streaming.rb:12:in `index'
+actionpack (5.2.0) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.0) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.0) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.0) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.0) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.0) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.0) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.0) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.0) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.0) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.0) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (731.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (647.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "facturas"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (756.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" ORDER BY "facturas"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (420.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (4371.3ms)
+Completed 200 OK in 4791ms (Views: 1987.9ms | ActiveRecord: 2795.2ms)
+
+
+Started GET "/admin/facturas" for ::1 at 2019-11-18 21:48:51 -0300
+  [1m[35m (238.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (230.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (253.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (237.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "facturas"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (224.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" ORDER BY "facturas"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (229.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (5817.3ms)
+Completed 200 OK in 7470ms (Views: 4278.2ms | ActiveRecord: 3102.2ms)
+
+
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 21:49:13 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"dPhZ6q6GbzJnIHXfOVoI4390A0i/8pmiILThYlG3ib1ze49gaT58CwEk/IiSHwF5+4n4U676J1Jzkmee6cocoQ==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (482.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (485.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:24
+Completed 500 Internal Server Error in 1479ms (ActiveRecord: 967.1ms)
+
+
+  
+NoMethodError (undefined method `imprimir' for #<Factura:0x000000000e6a9b78>):
+  
+app/models/factura.rb:28:in `descargar'
+app/admin/03_facturacion/facturas.rb:9:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:34:36 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"dPhZ6q6GbzJnIHXfOVoI4390A0i/8pmiILThYlG3ib1ze49gaT58CwEk/IiSHwF5+4n4U676J1Jzkmee6cocoQ==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (452.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (510.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:24
+Completed 500 Internal Server Error in 4525ms (ActiveRecord: 4180.2ms)
+
+
+  
+NoMethodError (undefined method `digito' for #<Class:0x000000000f2a4db0>
+Did you mean?  Digest):
+  
+app/models/factura.rb:50:in `imprimir'
+app/models/factura.rb:28:in `descargar'
+app/admin/03_facturacion/facturas.rb:9:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:36:17 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"dPhZ6q6GbzJnIHXfOVoI4390A0i/8pmiILThYlG3ib1ze49gaT58CwEk/IiSHwF5+4n4U676J1Jzkmee6cocoQ==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (406.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (416.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:24
+  [1m[36mUsuario Load (734.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:68
+  [1m[36mCuenta Load (390.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:70
+  [1m[36mLineaFactura Load (552.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE (factura_id=1) ORDER BY "linea_facturas"."indice" ASC[0m
+  ↳ app/models/factura.rb:111
+Completed 500 Internal Server Error in 6964ms (ActiveRecord: 6326.4ms)
+
+
+  
+NoMethodError (undefined method `nombre_alumno' for #<LineaFactura:0x000000000f2ad2f8>):
+  
+app/models/factura.rb:114:in `block (3 levels) in imprimir'
+app/models/factura.rb:113:in `block (2 levels) in imprimir'
+app/models/factura.rb:111:in `block in imprimir'
+app/models/factura.rb:89:in `imprimir'
+app/models/factura.rb:28:in `descargar'
+app/admin/03_facturacion/facturas.rb:9:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:39:18 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"dPhZ6q6GbzJnIHXfOVoI4390A0i/8pmiILThYlG3ib1ze49gaT58CwEk/IiSHwF5+4n4U676J1Jzkmee6cocoQ==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (373.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (348.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:24
+  [1m[36mUsuario Load (376.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:68
+  [1m[36mCuenta Load (480.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:70
+  [1m[36mLineaFactura Load (514.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE (factura_id=1) ORDER BY "linea_facturas"."indice" ASC[0m
+  ↳ app/models/factura.rb:111
+  [1m[36mAlumno Load (390.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121211], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:14
+  [1m[36mAlumno Load (333.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121212], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:14
+Completed 500 Internal Server Error in 8724ms (ActiveRecord: 8101.5ms)
+
+
+  
+NoMethodError (undefined method `send_file' for #<Class:0x000000000f35e9b8>
+Did you mean?  send_later):
+  
+app/models/factura.rb:30:in `descargar'
+app/admin/03_facturacion/facturas.rb:9:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:43:29 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"dPhZ6q6GbzJnIHXfOVoI4390A0i/8pmiILThYlG3ib1ze49gaT58CwEk/IiSHwF5+4n4U676J1Jzkmee6cocoQ==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (194.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 1205ms (ActiveRecord: 915.1ms)
+
+
+  
+NoMethodError (undefined method `descargar' for #<Class:0x000000000f04bc58>):
+  
+app/admin/03_facturacion/facturas.rb:9:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:43:52 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"dPhZ6q6GbzJnIHXfOVoI4390A0i/8pmiILThYlG3ib1ze49gaT58CwEk/IiSHwF5+4n4U676J1Jzkmee6cocoQ==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (167.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/facturas
+Completed 302 Found in 778ms (ActiveRecord: 660.0ms)
+
+
+Started GET "/admin/facturas" for ::1 at 2019-11-18 22:43:54 -0300
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (159.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (182.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (158.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "facturas"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (158.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" ORDER BY "facturas"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (156.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1875.1ms)
+Completed 200 OK in 2544ms (Views: 1021.8ms | ActiveRecord: 1502.1ms)
+
+
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:44:12 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"+4xP2OyOxFf6Ypy+yOrF6OHS9QVYexgy8E74i8c1t+D8D5lSKzbXbpxmFeljr8xyZS8OHklzpsKjaH53f0gi/A==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (163.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/facturas
+Completed 302 Found in 167ms (ActiveRecord: 163.0ms)
+
+
+Started GET "/admin/facturas" for ::1 at 2019-11-18 22:44:12 -0300
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (159.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (158.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (160.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "facturas"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (159.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" ORDER BY "facturas"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (163.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1510.1ms)
+Completed 200 OK in 1805ms (Views: 998.1ms | ActiveRecord: 799.0ms)
+
+
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:44:30 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"dtWoTSA5VWhJ6s4Lv4mtw5o6prLxytyijRem/Is6CSZxVn7H54FGUS/uR1wUzKRZHsddqeDCYlLeMSAAM0ecOg==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (998.1ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/facturas
+Completed 302 Found in 1009ms (ActiveRecord: 998.1ms)
+
+
+Started GET "/admin/facturas" for ::1 at 2019-11-18 22:44:31 -0300
+Processing by Admin::FacturasController#index as HTML
+  [1m[36mAdminUsuario Load (162.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (158.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (160.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "facturas"[0m
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "facturas" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (159.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" ORDER BY "facturas"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 100], ["OFFSET", 0]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (158.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:20
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/index.html.arb (1567.1ms)
+Completed 200 OK in 1870ms (Views: 1065.0ms | ActiveRecord: 797.0ms)
+
+
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:44:59 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"QsoDE/YwluzokFrx4mDDQ3gSOy5CaahLPa0KUI0fABRFSdWZMYiF1Y6U06ZJJcrZ/O/ANVNhFrtui4ysNWKVCA==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (186.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (158.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/admin/03_facturacion/facturas.rb:10
+  [1m[36mUsuario Load (162.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:49
+  [1m[36mCuenta Load (157.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:51
+Completed 500 Internal Server Error in 2454ms (ActiveRecord: 2177.1ms)
+
+
+  
+NameError (undefined local variable or method `cuenta_id' for #<Prawn::Document:0x000000000ed687c0>
+Did you mean?  cuenta):
+  
+app/models/factura.rb:81:in `block in imprimir'
+app/models/factura.rb:70:in `imprimir'
+app/admin/03_facturacion/facturas.rb:14:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:47:20 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"QsoDE/YwluzokFrx4mDDQ3gSOy5CaahLPa0KUI0fABRFSdWZMYiF1Y6U06ZJJcrZ/O/ANVNhFrtui4ysNWKVCA==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (160.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (156.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/admin/03_facturacion/facturas.rb:10
+  [1m[36mCuenta Load (157.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:39
+  [1m[36mUsuario Load (161.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:53
+Completed 500 Internal Server Error in 2405ms (ActiveRecord: 2122.1ms)
+
+
+  
+NameError (undefined local variable or method `cuenta' for #<Prawn::Document:0x0000000012187cb8>):
+  
+app/models/factura.rb:81:in `block (2 levels) in imprimir'
+app/models/factura.rb:80:in `block in imprimir'
+app/models/factura.rb:73:in `imprimir'
+app/admin/03_facturacion/facturas.rb:14:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:49:15 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"QsoDE/YwluzokFrx4mDDQ3gSOy5CaahLPa0KUI0fABRFSdWZMYiF1Y6U06ZJJcrZ/O/ANVNhFrtui4ysNWKVCA==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (163.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (157.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/admin/03_facturacion/facturas.rb:10
+  [1m[36mCuenta Load (177.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:39
+  [1m[36mUsuario Load (162.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:53
+Completed 500 Internal Server Error in 2392ms (ActiveRecord: 2134.1ms)
+
+
+  
+NameError (undefined local variable or method `cuenta' for #<Prawn::Document:0x0000000012ecede0>):
+  
+app/models/factura.rb:83:in `block (2 levels) in imprimir'
+app/models/factura.rb:82:in `block in imprimir'
+app/models/factura.rb:75:in `imprimir'
+app/admin/03_facturacion/facturas.rb:14:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:50:26 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"QsoDE/YwluzokFrx4mDDQ3gSOy5CaahLPa0KUI0fABRFSdWZMYiF1Y6U06ZJJcrZ/O/ANVNhFrtui4ysNWKVCA==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (159.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (157.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/admin/03_facturacion/facturas.rb:10
+  [1m[36mCuenta Load (264.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:39
+  [1m[36mUsuario Load (287.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:53
+Completed 500 Internal Server Error in 2990ms (ActiveRecord: 2711.2ms)
+
+
+  
+NameError (undefined local variable or method `id' for #<Prawn::Document:0x000000000e960b28>
+Did you mean?  i):
+  
+app/models/factura.rb:87:in `block in imprimir'
+app/models/factura.rb:75:in `imprimir'
+app/admin/03_facturacion/facturas.rb:14:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:54:58 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"QsoDE/YwluzokFrx4mDDQ3gSOy5CaahLPa0KUI0fABRFSdWZMYiF1Y6U06ZJJcrZ/O/ANVNhFrtui4ysNWKVCA==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (169.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (176.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/admin/03_facturacion/facturas.rb:10
+  [1m[36mCuenta Load (212.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:39
+  [1m[36mUsuario Load (205.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:53
+Completed 500 Internal Server Error in 2666ms (ActiveRecord: 2413.1ms)
+
+
+  
+NameError (undefined local variable or method `seld' for #<Factura:0x0000000011cc5ea0>
+Did you mean?  send):
+  
+app/models/factura.rb:73:in `imprimir'
+app/admin/03_facturacion/facturas.rb:14:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:55:25 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"QsoDE/YwluzokFrx4mDDQ3gSOy5CaahLPa0KUI0fABRFSdWZMYiF1Y6U06ZJJcrZ/O/ANVNhFrtui4ysNWKVCA==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (161.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (157.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/admin/03_facturacion/facturas.rb:10
+  [1m[36mCuenta Load (157.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:39
+  [1m[36mUsuario Load (161.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:53
+  [1m[36mLineaFactura Load (187.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE (factura_id=1) ORDER BY "linea_facturas"."indice" ASC[0m
+  ↳ app/models/factura.rb:97
+  [1m[36mAlumno Load (723.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121211], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:14
+Completed 500 Internal Server Error in 3993ms (ActiveRecord: 3699.2ms)
+
+
+  
+NameError (undefined local variable or method `dolar' for #<Prawn::Document:0x0000000012623c90>):
+  
+app/models/factura.rb:115:in `block (3 levels) in imprimir'
+app/models/factura.rb:114:in `block (2 levels) in imprimir'
+app/models/factura.rb:97:in `block in imprimir'
+app/models/factura.rb:75:in `imprimir'
+app/admin/03_facturacion/facturas.rb:14:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:55:54 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"QsoDE/YwluzokFrx4mDDQ3gSOy5CaahLPa0KUI0fABRFSdWZMYiF1Y6U06ZJJcrZ/O/ANVNhFrtui4ysNWKVCA==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (159.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (157.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/admin/03_facturacion/facturas.rb:10
+  [1m[36mCuenta Load (158.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:39
+  [1m[36mUsuario Load (158.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:53
+  [1m[36mLineaFactura Load (158.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE (factura_id=1) ORDER BY "linea_facturas"."indice" ASC[0m
+  ↳ app/models/factura.rb:97
+  [1m[36mAlumno Load (157.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121211], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:14
+  [1m[36mAlumno Load (158.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121212], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:14
+Completed 500 Internal Server Error in 3663ms (ActiveRecord: 3249.2ms)
+
+
+  
+NameError (undefined local variable or method `fecha' for #<Prawn::Document:0x0000000011d9e200>):
+  
+app/models/factura.rb:142:in `block in imprimir'
+app/models/factura.rb:75:in `imprimir'
+app/admin/03_facturacion/facturas.rb:14:in `block (2 levels) in <top (required)>'
+Started PUT "/admin/facturas/1/descargar" for ::1 at 2019-11-18 22:56:24 -0300
+Processing by Admin::FacturasController#descargar as HTML
+  Parameters: {"authenticity_token"=>"QsoDE/YwluzokFrx4mDDQ3gSOy5CaahLPa0KUI0fABRFSdWZMYiF1Y6U06ZJJcrZ/O/ANVNhFrtui4ysNWKVCA==", "id"=>"1"}
+  [1m[36mAdminUsuario Load (159.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (159.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/admin/03_facturacion/facturas.rb:10
+  [1m[36mCuenta Load (156.0ms)[0m  [1m[34mSELECT  "cuentas".* FROM "cuentas" WHERE "cuentas"."id" = $1 LIMIT $2[0m  [["id", 12121], ["LIMIT", 1]]
+  ↳ app/models/factura.rb:39
+  [1m[36mUsuario Load (169.0ms)[0m  [1m[34mSELECT  "usuarios".* FROM "usuarios" WHERE (id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=12121)) ORDER BY "usuarios"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/factura.rb:53
+  [1m[36mLineaFactura Load (158.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE (factura_id=1) ORDER BY "linea_facturas"."indice" ASC[0m
+  ↳ app/models/factura.rb:97
+  [1m[36mAlumno Load (157.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121211], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:14
+  [1m[36mAlumno Load (157.0ms)[0m  [1m[34mSELECT  "alumnos".* FROM "alumnos" WHERE "alumnos"."id" = $1 LIMIT $2[0m  [["id", 121212], ["LIMIT", 1]]
+  ↳ app/models/linea_factura.rb:14
+Sent file C:/Users/SEBAST~1/AppData/Local/Temp/factura_12121_1.pdf20191118-2664-1t5jklv (1.0ms)
+Completed 200 OK in 3627ms (ActiveRecord: 3247.2ms)
+
+
+Started GET "/admin/facturas/1/edit" for ::1 at 2019-11-18 22:56:55 -0300
+Processing by Admin::FacturasController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUsuario Load (170.0ms)[0m  [1m[34mSELECT  "admin_usuarios".* FROM "admin_usuarios" WHERE "admin_usuarios"."id" = $1 ORDER BY "admin_usuarios"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mFactura Load (182.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/edit.html.arb
+  [1m[36mCACHE Factura Load (0.0ms)[0m  [1m[34mSELECT  "facturas".* FROM "facturas" WHERE "facturas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ C:/Ruby/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mCuenta Load (463.0ms)[0m  [1m[34mSELECT "cuentas".* FROM "cuentas" ORDER BY "cuentas"."id" ASC[0m
+  ↳ app/models/cuenta.rb:20
+  [1m[36mLineaFactura Load (223.0ms)[0m  [1m[34mSELECT "linea_facturas".* FROM "linea_facturas" WHERE "linea_facturas"."factura_id" = $1[0m  [["factura_id", 1]]
+  ↳ app/views/admin/facturas/_form.html.erb:23
+  [1m[36mAlumno Load (436.0ms)[0m  [1m[34mSELECT "alumnos".* FROM "alumnos" ORDER BY "alumnos"."nombre" ASC, "alumnos"."apellido" ASC[0m
+  ↳ app/models/alumno.rb:20
+  [1m[36mCACHE Alumno Load (0.0ms)[0m  [1m[34mSELECT "alumnos".* FROM "alumnos" ORDER BY "alumnos"."nombre" ASC, "alumnos"."apellido" ASC[0m
+  ↳ app/models/alumno.rb:20
+  [1m[36mCACHE Alumno Load (0.0ms)[0m  [1m[34mSELECT "alumnos".* FROM "alumnos" ORDER BY "alumnos"."nombre" ASC, "alumnos"."apellido" ASC[0m
+  ↳ app/models/alumno.rb:20
+  Rendered admin/facturas/_form.html.erb (1615.1ms)
+  Rendered C:/Ruby/lib/ruby/gems/2.4.0/gems/activeadmin-1.3.0/app/views/active_admin/resource/edit.html.arb (2329.1ms)
+Completed 200 OK in 2831ms (Views: 1341.0ms | ActiveRecord: 1474.1ms)
+
+

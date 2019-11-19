@@ -1,0 +1,177 @@
+class Factura < ApplicationRecord
+  belongs_to :cuenta
+
+  has_many :linea_factura, :dependent => :delete_all
+  accepts_nested_attributes_for :linea_factura, allow_destroy: true
+
+  def nombre_clase()
+  	return "Factura"
+  end
+
+  def tostr()
+  	return "#{id}" 
+  end
+
+  def self.coleccion()
+  	return Factura.all.order(:id).map{|u| [u.tostr(),u.id]} 
+  end
+
+  def cuenta_tostr
+  	return cuenta != nil ? cuenta.tostr() : ""
+  end
+
+  require 'chunky_png'
+  require 'barby'
+  require 'barby/barcode/code_128'
+  #require 'barby/barcode/code_39'
+  require 'barby/outputter/png_outputter'
+
+  def digito(s)
+    suma = 0
+    (0..(s.length-1)).each do |i|
+      suma = suma + s[i,1].to_i
+    end
+    return 9-(suma%10)
+  end
+
+  def imprimir(file_path)
+
+  	  if cuenta == nil
+  	  	return
+  	  end
+
+      s = fecha.strftime('%Y%m') + 
+        id.to_s.rjust(6,'0') +
+        cuenta.id.to_s.rjust(5,'0') + 
+        (total * 100).to_i.to_s.rjust(8,'0') +
+        fecha_vencimiento.strftime('%Y%m%d')
+      
+      dig = digito(s).to_s
+
+      codigo_barras = '*JP' + s + "00" + dig + '*'
+
+      usuario = Usuario.where("id IN (SELECT usuario_id FROM titular_cuentas WHERE cuenta_id=#{cuenta.id})").first!
+      lineas = LineaFactura.where( "factura_id=#{id}" ).order(:indice)
+
+   	  text_file = Tempfile.new("text.pdf")
+ 	  text_file_path = text_file.path
+      template_file = Rails.root.join("data", 'factura.pdf')
+
+      i = 606 
+      f = 268
+
+      renglon = (i-f)*1.0/15
+
+      barcode = Barby::Code128B.new(codigo_barras)
+      #barcode = Barby::Code39.new(codigo_barras, true)
+
+	  barcode_file = Tempfile.new("barcode.png")
+      File.open(barcode_file.path, 'wb') do |f|
+	    f.write barcode.to_png(:height => 15, :margin => 0)
+      end
+
+      fact = self
+
+      Prawn::Document.generate(text_file_path) do
+
+        text_box "Titular", :at => [190, 710]
+        text_box "Cuenta", :at => [190, 710-renglon]
+        text_box "Factura", :at => [190, 710-2*renglon]
+        text_box "Vencimiento", :at => [190, 710-3*renglon]
+
+        bounding_box([280, 710], :width => 240, :height => renglon) do
+          text_box fact.cuenta.nombre, align: :left
+          transparent(0) { stroke_bounds }
+        end
+        text_box fact.cuenta.id.to_s, :at => [280, 710-renglon]
+        text_box fact.id.to_s, :at => [280, 710-2*renglon]
+        text_box fact.fecha_vencimiento.strftime('%d/%m/%Y'), :at => [280, 710-3*renglon]
+
+        text_box "Alumno", :at => [10, 606]
+        text_box "Grado", :at => [190, 606]
+        text_box "Concepto", :at => [280, 606]
+        text_box "Importe", :at => [450, 606]
+
+        # Generate whatever you want here.
+        indice = 1
+        lineas.each do |linea|
+
+          bounding_box([10, i-indice*renglon], :width => 160, :height => renglon) do
+            text_box linea.alumno_nombre_apellido_tostr, align: :left
+            transparent(0) { stroke_bounds }
+          end
+
+          text_box "", :at => [190, i-indice*renglon]
+
+          #text_box linea.descripcion, :at => [280, i-indice*renglon]
+          bounding_box([280, i-indice*renglon], :width => 160, :height => renglon) do
+            text_box linea.descripcion, align: :left
+            transparent(0) { stroke_bounds }
+          end
+
+
+
+          bounding_box([450, i-indice*renglon], :width => 70, :height => renglon) do
+           if fact.dolar == nil
+              text_box linea.importe.to_s, align: :right
+            else
+              text_box "US$", align: :left
+              text_box (linea.importe/fact.dolar).round(1).to_s, align: :right
+            end
+           transparent(0) { stroke_bounds }
+          end
+
+          indice = indice+1          
+        end
+
+        text_box "Total", :at => [200, 145]
+        bounding_box([320, 145], :width => 200, :height => renglon) do
+          if fact.dolar == nil
+            text_box fact.total.to_s, align: :right
+          else
+            text_box "US$", align: :left
+            text_box (fact.total/fact.dolar).round(1).to_s, align: :right
+          end
+          transparent(0) { stroke_bounds }
+        end
+
+        image barcode_file.path, at: [20, 25]
+
+        text_box codigo_barras, :at => [170, 8], size:8
+
+        text_box (fact.fecha - 1.days).strftime('%d/%m/%Y'), :at => [325, 106], size:8
+
+        delta=73
+
+        text_box "Emisión", :at => [20, 41], size:8
+        text_box "Vencimiento", :at => [20+delta, 41], size:8
+        text_box "Documento", :at => [20+2*delta, 41], size:8
+        text_box "Cuenta", :at => [20+3*delta, 41], size:8
+        text_box "Factura", :at => [20+4*delta, 41], size:8
+        text_box "Moneda", :at => [20+5*delta, 41], size:8
+        text_box "Importe", :at => [20+6*delta, 41], size:8
+
+        text_box I18n.l(fact.fecha, format: '%B'), :at => [20, 33], size:8
+        text_box fact.fecha_vencimiento.strftime('%d/%m/%Y'), :at => [20+delta, 33], size:8
+        text_box "Factura", :at => [20+2*delta, 33], size:8
+        text_box fact.cuenta.id.to_s, :at => [20+3*delta, 33], size:8
+        text_box fact.id.to_s, :at => [20+4*delta, 33], size:8
+        if ( fact.dolar == nil )
+          text_box "UYU", :at => [20+5*delta, 33], size:8
+        else
+          text_box "USD", :at => [20+5*delta, 33], size:8
+        end
+        text_box fact.total.to_s , :at => [20+6*delta, 33], size:8
+      end
+
+      pdf = CombinePDF.new
+      pdf << CombinePDF.load(template_file) # one way to combine, very fast.
+      pdf.pages.each {|page| page <<  CombinePDF.load(text_file_path).pages[0]}
+      pdf.save file_path
+
+	  text_file.unlink
+	  barcode_file.unlink
+
+    end
+
+end

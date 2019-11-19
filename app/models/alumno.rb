@@ -5,6 +5,9 @@ class Alumno < ApplicationRecord
   has_many :padre_alumno, :dependent => :delete_all
   accepts_nested_attributes_for :padre_alumno, allow_destroy: true
 
+  has_many :linea_factura, :dependent => :delete_all
+  accepts_nested_attributes_for :linea_factura, allow_destroy: true
+
   def nombre_clase()
   	return "Alumno"
   end
