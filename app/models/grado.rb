@@ -1,4 +1,6 @@
 class Grado < ApplicationRecord
+  has_many :opcion, :dependent => :delete_all
+  accepts_nested_attributes_for :opcion, allow_destroy: true
 
   def nombre_clase()
   	return "Grado"

@@ -1,14 +1,16 @@
-ActiveAdmin.register Grado do
+ActiveAdmin.register Opcion do
 
-  menu priority: 104, label: 'Grados', parent: 'Administración'
+  menu priority: 105, label: 'Opciones', parent: 'Administración'
 
-  permit_params :id, :nombre, :proximo_grado_id
+  permit_params :id, :nombre, :grado_id, :anio
 
   index do
   	#selectable_column
     column :id
     column :nombre
-    column :proximo_grado_id
+    column "Grado" do |r| r.grado_tostr() end
+    column :anio
+
     actions
   end
 
@@ -19,7 +21,8 @@ ActiveAdmin.register Grado do
     attributes_table do
       row :id
       row :nombre
-      row :proximo_grado_id
+      row "Grado" do |r| r.grado_tostr() end
+      row :anio
     end
   end
 
@@ -27,7 +30,8 @@ ActiveAdmin.register Grado do
     f.inputs do
       f.input :id
       f.input :nombre
-      f.input :proximo_grado_id
+      f.input :grado_id, :label => 'Grado', :as => :select, :collection => Grado.collection()
+      f.input :anio
     end
     f.actions
   end

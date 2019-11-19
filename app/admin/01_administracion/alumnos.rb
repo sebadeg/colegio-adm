@@ -1,6 +1,6 @@
 ActiveAdmin.register Alumno do
 
-  menu priority: 101, label: "Alumnos", parent: "Administracion"
+  menu priority: 101, label: "Alumnos", parent: "Administración"
 
   permit_params :id,
     :cedula,

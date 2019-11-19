@@ -28,6 +28,11 @@ es:
         lugar_nacimiento: "Lugar de nacimiento"
         fecha_nacimiento: "Fecha de nacimiento"
         anio_ingreso: "Año de ingreso"
+      factura:
+        fecha_vencimiento: "Fecha de vencimiento"
+        fecha_pagos: "Fecha de pagos"
+      opcion:
+        anio: "Año"
       usuario:
         cedula: "Cédula"
         lugar_nacimiento: "Lugar de nacimiento"

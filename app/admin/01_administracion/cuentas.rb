@@ -1,6 +1,6 @@
 ActiveAdmin.register Cuenta do
 
-  menu priority: 103, label: "Cuentas", parent: "Administracion"
+  menu priority: 103, label: "Cuentas", parent: "Administración"
   
   permit_params :id,
     :nombre,

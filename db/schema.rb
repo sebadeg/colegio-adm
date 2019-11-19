@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_230614) do
+ActiveRecord::Schema.define(version: 2019_11_19_022353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,15 @@ ActiveRecord::Schema.define(version: 2019_11_18_230614) do
     t.index ["factura_id"], name: "index_linea_facturas_on_factura_id"
   end
 
+  create_table "opciones", force: :cascade do |t|
+    t.bigint "grado_id"
+    t.string "nombre"
+    t.integer "anio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grado_id"], name: "index_opciones_on_grado_id"
+  end
+
   create_table "padre_alumnos", force: :cascade do |t|
     t.bigint "usuario_id"
     t.bigint "alumno_id"
@@ -195,6 +204,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_230614) do
   add_foreign_key "facturas", "cuentas"
   add_foreign_key "linea_facturas", "alumnos"
   add_foreign_key "linea_facturas", "facturas"
+  add_foreign_key "opciones", "grados"
   add_foreign_key "padre_alumnos", "alumnos"
   add_foreign_key "padre_alumnos", "usuarios"
   add_foreign_key "titular_cuentas", "cuentas"

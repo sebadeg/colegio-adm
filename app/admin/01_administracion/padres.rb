@@ -1,6 +1,6 @@
 ActiveAdmin.register Usuario do
 
-  menu priority: 102, label: "Padres", parent: "Administracion"
+  menu priority: 102, label: "Padres", parent: "Administración"
 
   permit_params :id,
     :cedula,

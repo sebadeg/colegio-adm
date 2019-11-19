@@ -232,8 +232,9 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.build_menu :default do |menu|
-      menu.add label: "Administracion", priority: 100
+      menu.add label: "Administración", priority: 100
       menu.add label: "Cuenta corriente", priority: 200
+      menu.add label: "Facturación", priority: 300
       menu.add label: "Sociedad", priority: 800
       menu.add label: "Usuarios", priority: 1000
     end
