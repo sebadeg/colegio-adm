@@ -1,0 +1,2 @@
+class ActividadOpcionConcepto < ApplicationRecord
+end

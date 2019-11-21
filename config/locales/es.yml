@@ -31,6 +31,9 @@ es:
       factura:
         fecha_vencimiento: "Fecha de vencimiento"
         fecha_pagos: "Fecha de pagos"
+      lista:
+        anio: "Año"
+        anio_corriente: "Año corriente"
       opcion:
         anio: "Año"
       usuario:

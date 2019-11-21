@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_022353) do
+ActiveRecord::Schema.define(version: 2019_11_21_021210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,69 @@ ActiveRecord::Schema.define(version: 2019_11_19_022353) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "actividad_alumnos", force: :cascade do |t|
+    t.bigint "actividad_id"
+    t.bigint "alumno_id"
+    t.boolean "mail"
+    t.datetime "bajado"
+    t.date "fecha"
+    t.integer "opcion"
+    t.date "fecha_secretaria"
+    t.integer "opcion_secretaria"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actividad_id"], name: "index_actividad_alumnos_on_actividad_id"
+    t.index ["alumno_id"], name: "index_actividad_alumnos_on_alumno_id"
+  end
+
+  create_table "actividad_archivos", force: :cascade do |t|
+    t.bigint "actividad_id"
+    t.integer "indice"
+    t.string "nombre"
+    t.binary "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actividad_id"], name: "index_actividad_archivos_on_actividad_id"
+  end
+
+  create_table "actividad_listas", force: :cascade do |t|
+    t.bigint "actividad_id"
+    t.bigint "lista_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actividad_id"], name: "index_actividad_listas_on_actividad_id"
+    t.index ["lista_id"], name: "index_actividad_listas_on_lista_id"
+  end
+
+  create_table "actividad_opcion_conceptos", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "actividad_opciones", force: :cascade do |t|
+    t.bigint "actividad_id"
+    t.integer "indice"
+    t.bigint "actividad_opcion_concepto_id"
+    t.date "fecha"
+    t.integer "cuotas"
+    t.decimal "importe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actividad_id"], name: "index_actividad_opciones_on_actividad_id"
+    t.index ["actividad_opcion_concepto_id"], name: "index_actividad_opciones_on_actividad_opcion_concepto_id"
+  end
+
+  create_table "actividades", force: :cascade do |t|
+    t.string "nombre"
+    t.date "fecha"
+    t.bigint "rubro_id"
+    t.boolean "mail", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rubro_id"], name: "index_actividades_on_rubro_id"
   end
 
   create_table "admin_usuarios", force: :cascade do |t|
@@ -59,6 +122,13 @@ ActiveRecord::Schema.define(version: 2019_11_19_022353) do
     t.string "emergencia"
     t.string "procede"
     t.integer "anio_ingreso"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "configs", force: :cascade do |t|
+    t.string "nombre"
+    t.string "valor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -121,6 +191,22 @@ ActiveRecord::Schema.define(version: 2019_11_19_022353) do
     t.index ["alumno_id"], name: "index_linea_facturas_on_alumno_id"
     t.index ["factura_id", "indice"], name: "index_linea_facturas_on_factura_id_and_indice", unique: true
     t.index ["factura_id"], name: "index_linea_facturas_on_factura_id"
+  end
+
+  create_table "lista_alumnos", force: :cascade do |t|
+    t.bigint "lista_id"
+    t.bigint "alumno_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_lista_alumnos_on_alumno_id"
+    t.index ["lista_id"], name: "index_lista_alumnos_on_lista_id"
+  end
+
+  create_table "listas", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "anio"
   end
 
   create_table "opciones", force: :cascade do |t|
@@ -198,12 +284,22 @@ ActiveRecord::Schema.define(version: 2019_11_19_022353) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actividad_alumnos", "actividades"
+  add_foreign_key "actividad_alumnos", "alumnos"
+  add_foreign_key "actividad_archivos", "actividades"
+  add_foreign_key "actividad_listas", "actividades"
+  add_foreign_key "actividad_listas", "listas"
+  add_foreign_key "actividad_opciones", "actividad_opcion_conceptos"
+  add_foreign_key "actividad_opciones", "actividades"
+  add_foreign_key "actividades", "rubros"
   add_foreign_key "cuenta_alumnos", "alumnos"
   add_foreign_key "cuenta_alumnos", "cuentas"
   add_foreign_key "cuota_socios", "socios"
   add_foreign_key "facturas", "cuentas"
   add_foreign_key "linea_facturas", "alumnos"
   add_foreign_key "linea_facturas", "facturas"
+  add_foreign_key "lista_alumnos", "alumnos"
+  add_foreign_key "lista_alumnos", "listas"
   add_foreign_key "opciones", "grados"
   add_foreign_key "padre_alumnos", "alumnos"
   add_foreign_key "padre_alumnos", "usuarios"
